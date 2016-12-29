@@ -1,0 +1,27 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+
+<p>Enter your email to sign up for the wait list</p>
+
+<%= form_for :wait_list, url: '/signup' do |f| %>
+
+  <%= hidden_field_tag :referral_hash, params[:referral_hash] %>
+
+  <label>Email</label>
+  <%= text_field_tag :email %>
+
+  <br>
+  <br>
+
+  <%= submit_tag "Sign up" %>
+<% end %>
+
+<br>
+<br>
+
+<% if @referral_hash %>
+  Here's a referral code to bump you up in line: <%= @referral_hash %>
+<% end %>
+
+
