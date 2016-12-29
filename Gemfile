@@ -12,6 +12,7 @@ gem 'acts_as_list'
 
 group :development, :test do
   gem 'byebug'
+  gem 'quiet_assets'
 end
 
 group :development do

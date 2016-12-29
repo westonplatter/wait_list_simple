@@ -86,6 +86,8 @@ GEM
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.19.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -163,6 +165,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.15)
+  quiet_assets
   rails (= 4.2.7)
   rails_12factor
   sass-rails (~> 5.0)

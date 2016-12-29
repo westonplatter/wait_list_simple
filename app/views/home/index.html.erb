@@ -6,7 +6,7 @@
 
 <%= form_for :wait_list, url: '/signup' do |f| %>
 
-  <%= hidden_field_tag :referral_hash, params[:referral_hash] %>
+  <%= hidden_field_tag :referral_hash, params[:referred_by] %>
 
   <label>Email</label>
   <%= text_field_tag :email %>
@@ -21,7 +21,7 @@
 <br>
 
 <% if @referral_hash %>
-  Here's a referral code to bump you up in line: <%= @referral_hash %>
+  Here's a referral code to bump you up in line: <%= link_to root_url(referred_by: @referral_hash), root_url(referred_by: @referral_hash) %>
 <% end %>
 
 

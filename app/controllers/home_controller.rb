@@ -1,34 +1,32 @@
-require 'base64'
+require 'securerandom'
 
 class HomeController < ApplicationController
   def index
-
-    if params_referral_hash
-      @referral_hash = 'xyz890'
-    end
+    @referral_hash = params_referral_hash if params_referral_hash
   end
 
   def signup
     @user = User.find_by(email: params_email)
 
     if @user.nil?
-      @user = User.create(email: params_email, password: 'password_to_satisfy_devise_constrait')
+      uuid = SecureRandom.uuid
+
+      @user = User.create(
+        email: params_email,
+        password: 'password_to_satisfy_devise_constrait',
+        referral_hash: uuid)
     end
 
-    # unless params_referral_hash.nil?
-    #   x = Base64.decode64(params_referral_hash)
-    #   if x.include?("|")
-    #     email, id = x.split("|")
-    #     @referring_user = User.find_by(email: email, id: id)
-    #     @referring_user.increment_position if @referring_user
-    #   end
-    # end
+    unless params_referral_hash.blank?
+      @referring_user = User.where(referral_hash: params_referral_hash).first
+      @referring_user.move_higher if (@referring_user and @referring_user.email != params_email)
+    end
 
     spot = @user.position
 
     flash[:info] = "thanks for signing up with #{@user.email}. you're ##{@user.position} on the wait list"
 
-    redirect_to root_path(referral_hash: 'abc123')
+    redirect_to root_path(referral_hash: @user.referral_hash)
   end
 
 
@@ -51,6 +49,7 @@ class HomeController < ApplicationController
       return email
     rescue Exception => e
       # not good to catch exceptions, so you want to fix/change this before going into production with this
+      raise e
     end
   end
 end
