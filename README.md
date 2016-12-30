@@ -1,4 +1,4 @@
-== Wait List Simple
+## Wait List Simple
 
 
 Example Use Case
