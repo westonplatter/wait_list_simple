@@ -6,7 +6,7 @@ Example Use Case
 
 Simple one page app (without styling) demonstrating a wait list.
 
-User 1 signs up for the wait list with email `user1@example.com`. They are position #1.
+User 1 signs up for the wait list with email `user1@example.com`. They are in position #1.
 
 User 2 signs up with `user2@example.com`. They're in position #2.
 
