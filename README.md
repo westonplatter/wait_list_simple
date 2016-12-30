@@ -15,7 +15,7 @@ User 3 signs up with `user3@example.com`. They're in position #3.
 User 3 tries to game the system by referral themself and signing up with a
 derivative of their email, `user3+101@example.com`. The system inteprets their
 email as `user3@example.com` and makes not adjustment to User 3's accont. The
-system responds with text on the page stating that User 3 is in position 3.
+system responds with text on the page stating that User 3 is in position #3.
 
 User 2 referrals User 4 to sign up via their referral link. When User 4 signs
 up with `user4@example.com`, User 4 is position #4, and User 2 is bumped up to
